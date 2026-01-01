@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Designs 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .snap-container {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100vh;
+        }
+        
+        .snap-section {
+            scroll-snap-align: start;
+            height: 100vh;
+        }
+
+        .toggle-letter {
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-shadow: 
+                1px 1px 0 #1a202c,
+                2px 2px 0 #1a202c,
+                3px 3px 0 #1a202c,
+                4px 4px 0 #0f1419,
+                5px 5px 0 #0f1419,
+                6px 6px 0 #0a0e12,
+                7px 7px 0 #0a0e12,
+                8px 8px 0 #05070a,
+                9px 9px 0 #05070a,
+                10px 10px 0 #000000,
+                11px 11px 0 #000000,
+                12px 12px 0 #000000,
+                13px 13px 8px rgba(0, 0, 0, 0.4),
+                14px 14px 10px rgba(0, 0, 0, 0.3),
+                15px 15px 12px rgba(0, 0, 0, 0.2);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .toggle-letter.active {
+            text-shadow: 
+                0 0 10px rgba(96, 165, 250, 1),
+                0 0 20px rgba(96, 165, 250, 0.8),
+                0 0 30px rgba(96, 165, 250, 0.6),
+                0 0 40px rgba(96, 165, 250, 0.4),
+                1px 1px 0 #3b82f6,
+                2px 2px 0 #2563eb,
+                3px 3px 0 #2563eb,
+                4px 4px 0 #1e40af,
+                5px 5px 0 #1e40af,
+                6px 6px 0 #1e3a8a,
+                7px 7px 0 #1e3a8a,
+                8px 8px 0 #172554,
+                9px 9px 0 #172554,
+                10px 10px 0 #0c1844,
+                11px 11px 0 #0c1844,
+                12px 12px 0 #000000,
+                13px 13px 8px rgba(59, 130, 246, 0.6),
+                14px 14px 12px rgba(37, 99, 235, 0.4),
+                15px 15px 15px rgba(29, 78, 216, 0.3);
+            transform: translateY(-12px) scale(1.05);
+        }
+
+        .toggle-letter.active {
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% {
+                filter: brightness(1) drop-shadow(0 0 30px rgba(96, 165, 250, 0.5));
+            }
+            50% {
+                filter: brightness(1.2) drop-shadow(0 0 50px rgba(96, 165, 250, 0.8));
+            }
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(-10px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 0.3s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+    <div class="snap-container">
+        
+        <section class="snap-section flex items-center justify-center bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 relative">
+            <div class="absolute top-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
+                Click each number to toggle
+            </div>
+
+            <div class="relative px-4">
+                <div class="flex justify-center items-center">
+                    <span class="toggle-letter relative inline-block font-black text-[4.5rem] sm:text-[8rem] md:text-[12rem] lg:text-[14rem] text-gray-700 -mr-2 sm:-mr-4 md:-mr-6" data-letter="2">2</span>
+                    <span class="toggle-letter relative inline-block font-black text-[4.5rem] sm:text-[8rem] md:text-[12rem] lg:text-[14rem] text-gray-700 -mr-2 sm:-mr-4 md:-mr-6" data-letter="0">0</span>
+                    <span class="toggle-letter relative inline-block font-black text-[4.5rem] sm:text-[8rem] md:text-[12rem] lg:text-[14rem] text-gray-700 -mr-2 sm:-mr-4 md:-mr-6" data-letter="2">2</span>
+                    <span class="toggle-letter relative inline-block font-black text-[4.5rem] sm:text-[8rem] md:text-[12rem] lg:text-[14rem] text-gray-700" data-letter="6">6</span>
+                </div>
+            </div>
+
+            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
+                Day 1 of 365
+            </div>
+        </section>
+
+        <section class="snap-section flex items-center justify-center bg-gradient-to-br from-purple-900 via-pink-900 to-red-900">
+            <div class="text-white text-center">
+                <h2 class="text-6xl font-bold mb-4">Day 2</h2>
+                <p class="text-xl opacity-70">Coming Soon...</p>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const letters = document.querySelectorAll('.toggle-letter');
+        
+        letters.forEach(letter => {
+            letter.addEventListener('click', function() {
+                this.classList.toggle('active');
+                
+                this.style.transform = this.classList.contains('active') 
+                    ? 'translateY(-12px) scale(1.05)' 
+                    : 'translateY(0) scale(1)';
+            });
+            
+            letter.addEventListener('mouseenter', function() {
+                if (!this.classList.contains('active')) {
+                    this.style.transform = 'translateY(-6px) scale(1.02)';
+                }
+            });
+            
+            letter.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('active')) {
+                    this.style.transform = 'translateY(0) scale(1)';
+                }
+            });
+        });
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                letters.forEach((letter, index) => {
+                    setTimeout(() => {
+                        letter.classList.add('active');
+                        setTimeout(() => {
+                            letter.classList.remove('active');
+                        }, 500);
+                    }, index * 200);
+                });
+            }, 500);
+        });
+
+        let touchStartY = 0;
+        let touchEndY = 0;
+        
+        document.querySelector('.snap-container').addEventListener('touchstart', (e) => {
+            touchStartY = e.changedTouches[0].screenY;
+        });
+        
+        document.querySelector('.snap-container').addEventListener('touchend', (e) => {
+            touchEndY = e.changedTouches[0].screenY;
+        });
+    </script>
+</body>
+</html>
