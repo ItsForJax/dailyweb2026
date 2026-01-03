@@ -2,6 +2,7 @@ FROM php:8.2-apache
 
 COPY index.html /var/www/html/index.html
 COPY days/ /var/www/html/days/
+COPY assets/ /var/www/html/assets/
 
 RUN chown -R www-data:www-data /var/www/html && \
     chmod -R 755 /var/www/html
