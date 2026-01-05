@@ -6,6 +6,7 @@
     border-color: #dfdfdf #0a0a0a #0a0a0a #dfdfdf;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
     min-width: 400px;
+    max-width: 95vw;
 }
 
 .window-titlebar {
@@ -229,11 +230,14 @@
     border-width: 3px;
     border-color: #808080 #ffffff #ffffff #808080;
     background: #c0c0c0;
+    line-height: 0;
 }
 
 .mine-cell {
     width: 40px;
     height: 40px;
+    min-width: 28px;
+    min-height: 28px;
     background: linear-gradient(135deg, #c0c0c0 0%, #e0e0e0 50%, #c0c0c0 100%);
     border-style: solid;
     border-width: 3px;
@@ -318,40 +322,87 @@
 
 /* Responsive design */
 @media (max-width: 768px) {
+    .windows-window {
+        min-width: 300px;
+    }
+
+    .mine-grid {
+        gap: 0;
+        border-width: 2px;
+    }
+
     .mine-cell {
-        width: 25px;
-        height: 25px;
+        width: 32px;
+        height: 32px;
+        font-size: 18px;
+        border-width: 2px;
+    }
+
+    .mine-cell.flagged::after {
         font-size: 14px;
     }
 
-    .mine-cell.flagged::after,
     .mine-cell.mine::after {
-        font-size: 13px;
+        width: 12px;
+        height: 12px;
     }
 
-    .display-container-mini {
-        transform: scale(0.8);
+    .display-digit {
+        width: 11px;
+        height: 20px;
     }
 
     .reset-button {
-        width: 42px;
-        height: 42px;
+        width: 28px;
+        height: 28px;
+    }
+
+    .game-board {
+        padding: 8px;
     }
 }
 
 @media (max-width: 480px) {
+    .windows-window {
+        min-width: 280px;
+    }
+
+    .mine-grid {
+        gap: 0;
+        border-width: 2px;
+    }
+
     .mine-cell {
-        width: 22px;
-        height: 22px;
+        width: 28px;
+        height: 28px;
+        font-size: 16px;
+        border-width: 2px;
+    }
+
+    .mine-cell.flagged::after {
         font-size: 12px;
     }
 
-    .mine-cell.flagged::after,
     .mine-cell.mine::after {
-        font-size: 11px;
+        width: 10px;
+        height: 10px;
     }
 
-    .display-container-mini {
-        transform: scale(0.7);
+    .display-digit {
+        width: 10px;
+        height: 18px;
+    }
+
+    .reset-button {
+        width: 24px;
+        height: 24px;
+    }
+
+    .game-header {
+        padding: 6px 8px;
+    }
+
+    .mines-counter, .timer-counter {
+        padding: 3px 6px;
     }
 }
