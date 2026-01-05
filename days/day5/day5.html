@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 5 - Retro Snake Game</title>
+    <link rel="stylesheet" href="day5.css">
+</head>
+<body>
+    <div class="container">
+        <div class="game-wrapper">
+            <div class="header">
+                <h1 class="title">SNAKE</h1>
+                <div class="score-board">
+                    <div class="score-item">
+                        <span class="label">SCORE</span>
+                        <span class="value" id="score">0000</span>
+                    </div>
+                    <div class="score-item">
+                        <span class="label">HIGH</span>
+                        <span class="value" id="highScore">0000</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-container">
+                <canvas id="gameCanvas"></canvas>
+
+                <div class="game-over hidden" id="gameOver">
+                    <div class="game-over-content">
+                        <h2 class="blink">GAME OVER</h2>
+                        <p class="final-score">SCORE: <span id="finalScore">0</span></p>
+                        <button class="retro-button" id="restartBtn">PRESS START</button>
+                    </div>
+                </div>
+
+                <div class="start-screen" id="startScreen">
+                    <div class="start-content">
+                        <h2 class="blink">READY?</h2>
+                        <div class="controls">
+                            <p>USE WASD KEYS</p>
+                            <div class="arrow-keys">
+                                <div class="key-row">
+                                    <div class="key">W</div>
+                                </div>
+                                <div class="key-row">
+                                    <div class="key">A</div>
+                                    <div class="key">S</div>
+                                    <div class="key">D</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="retro-button" id="startBtn">START GAME</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="day5.js"></script>
+</body>
+</html>

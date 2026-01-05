@@ -56,6 +56,22 @@ Inspired by that classic episode of The Office where everyone watches the DVD lo
 
 ---
 
+### Day 5: Retro Snake Game
+Classic Snake game with a retro terminal aesthetic! Control the snake with WASD keys, eat food to grow, and avoid crashing into walls or yourself.
+
+**What I learned:**
+- Canvas-based game rendering with pixel-perfect graphics
+- Game loop mechanics with `setInterval`
+- Grid-based movement and collision detection
+- State management for game flow (start, playing, game over)
+- LocalStorage for persistent high scores
+- Keyboard event handling for game controls
+- Retro CRT monitor effects with CSS (scanlines, glow, shadows)
+- Responsive canvas sizing for mobile devices
+- Progressive difficulty with speed increases
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
