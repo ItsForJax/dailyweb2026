@@ -4,7 +4,7 @@ const ctx = canvas.getContext('2d');
 
 // Game constants
 const GRID_SIZE = 20;
-let CANVAS_SIZE = Math.min(600, window.innerWidth - 80);
+const CANVAS_SIZE = 600;
 canvas.width = CANVAS_SIZE;
 canvas.height = CANVAS_SIZE;
 
@@ -252,6 +252,60 @@ function gameOver() {
     finalScoreElement.textContent = score;
     gameOverScreen.classList.remove('hidden');
 }
+
+// Mobile control buttons
+const btnUp = document.getElementById('btnUp');
+const btnDown = document.getElementById('btnDown');
+const btnLeft = document.getElementById('btnLeft');
+const btnRight = document.getElementById('btnRight');
+
+btnUp.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (!gameRunning) {
+        startGame();
+        return;
+    }
+    if (dy === 0) {
+        dx = 0;
+        dy = -1;
+    }
+});
+
+btnDown.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (!gameRunning) {
+        startGame();
+        return;
+    }
+    if (dy === 0) {
+        dx = 0;
+        dy = 1;
+    }
+});
+
+btnLeft.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (!gameRunning) {
+        startGame();
+        return;
+    }
+    if (dx === 0) {
+        dx = -1;
+        dy = 0;
+    }
+});
+
+btnRight.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (!gameRunning) {
+        startGame();
+        return;
+    }
+    if (dx === 0) {
+        dx = 1;
+        dy = 0;
+    }
+});
 
 // Initial draw
 draw();
