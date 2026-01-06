@@ -205,8 +205,19 @@ let draggedBall = null;
 
 function getEventPos(e) {
     const rect = canvas.getBoundingClientRect();
-    const clientX = e.clientX || (e.touches && e.touches[0] && e.touches[0].clientX);
-    const clientY = e.clientY || (e.touches && e.touches[0] && e.touches[0].clientY);
+    let clientX, clientY;
+
+    if (e.touches && e.touches.length > 0) {
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+    } else if (e.changedTouches && e.changedTouches.length > 0) {
+        clientX = e.changedTouches[0].clientX;
+        clientY = e.changedTouches[0].clientY;
+    } else {
+        clientX = e.clientX;
+        clientY = e.clientY;
+    }
+
     return {
         x: clientX - rect.left,
         y: clientY - rect.top
