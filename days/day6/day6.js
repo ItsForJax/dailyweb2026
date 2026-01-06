@@ -57,9 +57,14 @@ function handleCollisions() {
                 ball1.x = ball2.x - Math.cos(angle) * minDistance;
                 ball1.y = ball2.y - Math.sin(angle) * minDistance;
 
-                // Update ball1's angle to match new position
+                // Constrain ball1 to rope length
                 const dx1 = ball1.x - ball1.anchorX;
                 const dy1 = ball1.y - ball1.anchorY;
+                const dist1 = Math.sqrt(dx1 * dx1 + dy1 * dy1);
+                if (dist1 > 0) {
+                    ball1.x = ball1.anchorX + (dx1 / dist1) * ROPE_LENGTH;
+                    ball1.y = ball1.anchorY + (dy1 / dist1) * ROPE_LENGTH;
+                }
                 ball1.angle = Math.atan2(dx1, dy1);
 
                 // Push ball2 in the direction of ball1's movement
@@ -76,9 +81,14 @@ function handleCollisions() {
                 ball2.x = ball1.x + Math.cos(angle) * minDistance;
                 ball2.y = ball1.y + Math.sin(angle) * minDistance;
 
-                // Update ball2's angle to match new position
+                // Constrain ball2 to rope length
                 const dx2 = ball2.x - ball2.anchorX;
                 const dy2 = ball2.y - ball2.anchorY;
+                const dist2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+                if (dist2 > 0) {
+                    ball2.x = ball2.anchorX + (dx2 / dist2) * ROPE_LENGTH;
+                    ball2.y = ball2.anchorY + (dy2 / dist2) * ROPE_LENGTH;
+                }
                 ball2.angle = Math.atan2(dx2, dy2);
 
                 // Push ball1 in the direction of ball2's movement
@@ -93,13 +103,30 @@ function handleCollisions() {
                 ball1.angleVelocity = ball2.angleVelocity;
                 ball2.angleVelocity = temp;
 
-                // Separate them to prevent overlap
+                // Separate them to prevent overlap while maintaining rope length
                 const overlap = minDistance - distance;
                 const angle = Math.atan2(dy, dx);
                 ball1.x -= Math.cos(angle) * (overlap / 2);
                 ball1.y -= Math.sin(angle) * (overlap / 2);
                 ball2.x += Math.cos(angle) * (overlap / 2);
                 ball2.y += Math.sin(angle) * (overlap / 2);
+
+                // Constrain both balls to rope length
+                const dx1 = ball1.x - ball1.anchorX;
+                const dy1 = ball1.y - ball1.anchorY;
+                const dist1 = Math.sqrt(dx1 * dx1 + dy1 * dy1);
+                if (dist1 > 0) {
+                    ball1.x = ball1.anchorX + (dx1 / dist1) * ROPE_LENGTH;
+                    ball1.y = ball1.anchorY + (dy1 / dist1) * ROPE_LENGTH;
+                }
+
+                const dx2 = ball2.x - ball2.anchorX;
+                const dy2 = ball2.y - ball2.anchorY;
+                const dist2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+                if (dist2 > 0) {
+                    ball2.x = ball2.anchorX + (dx2 / dist2) * ROPE_LENGTH;
+                    ball2.y = ball2.anchorY + (dy2 / dist2) * ROPE_LENGTH;
+                }
 
                 // Update angles based on new positions
                 ball1.angle = Math.atan2(ball1.x - ball1.anchorX, ball1.y - ball1.anchorY);
