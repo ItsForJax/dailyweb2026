@@ -200,41 +200,45 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-// Mouse handling
+// Mouse and Touch handling
 let draggedBall = null;
 
-function getMousePos(e) {
+function getEventPos(e) {
     const rect = canvas.getBoundingClientRect();
+    const clientX = e.clientX || (e.touches && e.touches[0] && e.touches[0].clientX);
+    const clientY = e.clientY || (e.touches && e.touches[0] && e.touches[0].clientY);
     return {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top
+        x: clientX - rect.left,
+        y: clientY - rect.top
     };
 }
 
-function isMouseInBall(mouseX, mouseY, ball) {
-    const dx = mouseX - ball.x;
-    const dy = mouseY - ball.y;
+function isPointInBall(x, y, ball) {
+    const dx = x - ball.x;
+    const dy = y - ball.y;
     return Math.sqrt(dx * dx + dy * dy) < BALL_RADIUS;
 }
 
-canvas.addEventListener('mousedown', (e) => {
-    const pos = getMousePos(e);
+function handleStart(e) {
+    e.preventDefault();
+    const pos = getEventPos(e);
 
-    // Check if clicking on any ball
+    // Check if clicking/touching on any ball
     for (let i = balls.length - 1; i >= 0; i--) {
-        if (isMouseInBall(pos.x, pos.y, balls[i])) {
+        if (isPointInBall(pos.x, pos.y, balls[i])) {
             draggedBall = balls[i];
             draggedBall.isDragging = true;
             break;
         }
     }
-});
+}
 
-canvas.addEventListener('mousemove', (e) => {
+function handleMove(e) {
+    e.preventDefault();
     if (draggedBall) {
-        const pos = getMousePos(e);
+        const pos = getEventPos(e);
 
-        // Calculate direction from anchor to mouse
+        // Calculate direction from anchor to pointer
         const dx = pos.x - draggedBall.anchorX;
         const dy = pos.y - draggedBall.anchorY;
         const distance = Math.sqrt(dx * dx + dy * dy);
@@ -249,21 +253,27 @@ canvas.addEventListener('mousemove', (e) => {
             draggedBall.angleVelocity = 0;
         }
     }
-});
+}
 
-canvas.addEventListener('mouseup', () => {
+function handleEnd(e) {
+    e.preventDefault();
     if (draggedBall) {
         draggedBall.isDragging = false;
         draggedBall = null;
     }
-});
+}
 
-canvas.addEventListener('mouseleave', () => {
-    if (draggedBall) {
-        draggedBall.isDragging = false;
-        draggedBall = null;
-    }
-});
+// Mouse events
+canvas.addEventListener('mousedown', handleStart);
+canvas.addEventListener('mousemove', handleMove);
+canvas.addEventListener('mouseup', handleEnd);
+canvas.addEventListener('mouseleave', handleEnd);
+
+// Touch events
+canvas.addEventListener('touchstart', handleStart);
+canvas.addEventListener('touchmove', handleMove);
+canvas.addEventListener('touchend', handleEnd);
+canvas.addEventListener('touchcancel', handleEnd);
 
 // Start animation
 animate();
