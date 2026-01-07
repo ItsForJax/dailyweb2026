@@ -1,9 +1,32 @@
 const canvas = document.getElementById('dotCanvas');
 const ctx = canvas.getContext('2d');
 
-// Set canvas size
-canvas.width = 800;
-canvas.height = 600;
+// Set canvas size responsively
+function resizeCanvas() {
+    const maxWidth = Math.min(window.innerWidth - 40, 800);
+    const maxHeight = Math.min(window.innerHeight - 40, 600);
+
+    canvas.width = maxWidth;
+    canvas.height = maxHeight;
+
+    // Recreate dot grid when canvas resizes
+    createDotGrid();
+}
+
+// Create dot grid function
+function createDotGrid() {
+    dots.length = 0; // Clear existing dots
+    for (let x = DOT_SPACING; x < canvas.width; x += DOT_SPACING) {
+        for (let y = DOT_SPACING; y < canvas.height; y += DOT_SPACING) {
+            dots.push({
+                x: x,
+                y: y,
+                baseSize: BASE_DOT_SIZE,
+                currentSize: BASE_DOT_SIZE
+            });
+        }
+    }
+}
 
 // Configuration
 const DOT_SPACING = 30;
@@ -13,16 +36,9 @@ const INFLUENCE_RADIUS = 150;
 
 // Create dot grid
 const dots = [];
-for (let x = DOT_SPACING; x < canvas.width; x += DOT_SPACING) {
-    for (let y = DOT_SPACING; y < canvas.height; y += DOT_SPACING) {
-        dots.push({
-            x: x,
-            y: y,
-            baseSize: BASE_DOT_SIZE,
-            currentSize: BASE_DOT_SIZE
-        });
-    }
-}
+
+// Initialize canvas size
+resizeCanvas();
 
 // Mouse/Touch position
 let mouseX = -1000;
@@ -131,6 +147,9 @@ function draw() {
 
     requestAnimationFrame(draw);
 }
+
+// Handle window resize
+window.addEventListener('resize', resizeCanvas);
 
 // Start animation
 draw();
