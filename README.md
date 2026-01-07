@@ -72,6 +72,32 @@ Classic Snake game with a retro terminal aesthetic! Control the snake with WASD 
 
 ---
 
+### Day 6: Newton's Cradle
+Physics simulation of Newton's Cradle with interactive pendulums! Drag the balls to set them in motion and watch the momentum transfer.
+
+**What I learned:**
+- Pendulum physics with angle-based calculations
+- Collision detection between multiple objects
+- Momentum transfer between objects
+- Touch and mouse event handling for dragging
+- Smooth animation with `requestAnimationFrame`
+- Canvas rendering for dynamic physics simulations
+
+---
+
+### Day 7: Interactive Dot Grid
+A mesmerizing interactive dot grid where dots grow larger based on proximity to your cursor or touch point. Features a floating circle indicator for mobile devices.
+
+**What I learned:**
+- Distance-based influence calculations for visual effects
+- Smooth interpolation for size transitions
+- Touch event handling with visual feedback
+- Creating responsive canvas interactions
+- Drawing layered canvas elements (dots + indicators)
+- Detecting touch vs mouse input for adaptive UI
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
