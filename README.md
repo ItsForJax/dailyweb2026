@@ -98,6 +98,21 @@ A mesmerizing interactive dot grid where dots grow larger based on proximity to 
 
 ---
 
+### Day 8: Liquid Blobs (Metaballs)
+Smooth, organic liquid blobs that merge and blend together seamlessly! Using the metaball rendering technique to create fluid-like animations with color blending. Click and drag to create your own blob.
+
+**What I learned:**
+- Metaball algorithm for smooth merging effects
+- Pixel-level canvas manipulation with ImageData
+- Field value calculations based on distance
+- Weighted color blending between multiple sources
+- Performance optimization with sampling step sizes
+- Physics-based bouncing with wall collisions
+- Interactive canvas drawing with mouse/touch
+- Creating organic, fluid visual effects
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
