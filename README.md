@@ -127,6 +127,21 @@ A smooth, elastic toggle switch with stretching animations! The handle squishes 
 
 ---
 
+### Day 10: Chrome Dino Game
+Recreation of the classic Chrome offline dinosaur game! Jump over cacti, rack up points, and try to beat your high score. Attempted to use sprite sheets but ended up using simple geometric shapes instead.
+
+**What I learned:**
+- Canvas game loop with requestAnimationFrame
+- Basic 2D game physics (gravity, jumping)
+- Collision detection with bounding boxes
+- Progressive difficulty scaling
+- LocalStorage for persistent high scores
+- Game state management (start, playing, game over)
+- Touch and keyboard controls for cross-platform play
+- Sometimes simple shapes work just fine
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
