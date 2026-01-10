@@ -113,6 +113,20 @@ Smooth, organic liquid blobs that merge and blend together seamlessly! Using the
 
 ---
 
+### Day 9: Animated Toggle Switch
+A smooth, elastic toggle switch with stretching animations! The handle squishes and stretches as it slides between states, with smooth color transitions.
+
+**What I learned:**
+- CSS custom properties (variables) for colors and timing
+- Complex keyframe animations with multiple properties
+- Creating stretching/elastic effects with width transitions
+- Multi-layered inset box-shadows for depth
+- Cubic bezier easing for natural motion
+- Pristine state pattern to prevent initial animation
+- CSS-only interactive UI elements (no JavaScript needed)
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
