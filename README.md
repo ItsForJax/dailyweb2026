@@ -142,6 +142,21 @@ Recreation of the classic Chrome offline dinosaur game! Jump over cacti, rack up
 
 ---
 
+### Day 11: Matrix Falling Text
+The iconic Matrix digital rain effect with interactive controls! Customize the speed, color, font size, and character density in real-time.
+
+**What I learned:**
+- Canvas text rendering with falling animation
+- Using Japanese Katakana characters for authentic Matrix feel
+- Interval-based animation with dynamic FPS control
+- Real-time parameter adjustments with range inputs
+- Color picker integration
+- Trail effects with semi-transparent overlays
+- Responsive canvas that adapts to window size
+- Creating interactive visual effects with user controls
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
