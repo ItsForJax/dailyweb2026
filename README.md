@@ -157,6 +157,21 @@ The iconic Matrix digital rain effect with interactive controls! Customize the s
 
 ---
 
+### Day 12: Interactive Fractal Generator
+Click anywhere to spawn beautiful fractals! Each click cycles through 4 different fractal types: branching trees, circle patterns, Sierpinski triangles, and spirals.
+
+**What I learned:**
+- Recursive drawing algorithms for fractals
+- Branching tree structures with angle mathematics
+- Circle packing and recursive patterns
+- Sierpinski triangle implementation
+- Spiral generation with geometric progression
+- HSL color system for dynamic hues
+- Alpha transparency for depth effects
+- Touch and mouse event handling for canvas interactions
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
