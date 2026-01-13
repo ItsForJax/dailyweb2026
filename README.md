@@ -172,6 +172,21 @@ Click anywhere to spawn beautiful fractals! Each click cycles through 4 differen
 
 ---
 
+### Day 13: Endless Pong
+Classic Pong game with a twist - you play against a wall! The ball bounces endlessly, and you can never lose (unless you miss). Keep the rally going as long as possible.
+
+**What I learned:**
+- Classic arcade game mechanics
+- Paddle physics and ball collision detection
+- Keyboard input handling with simultaneous key presses
+- Touch controls for mobile paddle movement
+- Score tracking without game over state
+- Ball angle changes based on paddle hit position
+- Simple AI-free gameplay loop
+- Retro game aesthetics with minimal graphics
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
