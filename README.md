@@ -187,6 +187,21 @@ Classic Pong game with a twist - you play against a wall! The ball bounces endle
 
 ---
 
+### Day 14: Bouncing Balls in a Circle
+A physics simulation where balls bounce inside a circular boundary! Click inside the circle to add up to 5 colorful balls that bounce around realistically.
+
+**What I learned:**
+- Circular boundary collision detection
+- Vector reflection math for curved surfaces
+- Distance calculations with Pythagorean theorem
+- Normal vector calculations for circular collision
+- Preventing ball overlap with boundary
+- Random velocity generation
+- HSL color system for random colors
+- Click-to-add interactive mechanics
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
