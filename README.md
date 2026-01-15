@@ -202,6 +202,21 @@ A physics simulation where balls bounce inside a circular boundary! Click inside
 
 ---
 
+### Day 15: Particle Explosion
+Click anywhere to create colorful particle bursts! Drag your mouse or finger to leave a trail of explosions. Particles have gravity and fade out naturally.
+
+**What I learned:**
+- Particle system fundamentals
+- Gravity and friction physics simulation
+- Alpha transparency for fade-out effects
+- Trail effect with semi-transparent background
+- Mouse drag detection for continuous explosions
+- Touch move events for mobile trails
+- Efficient particle cleanup with array filtering
+- HSL color variations within explosions
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
