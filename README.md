@@ -217,6 +217,36 @@ Click anywhere to create colorful particle bursts! Drag your mouse or finger to 
 
 ---
 
+### Day 16: Memory Card Game
+Classic memory matching game! Flip cards to find matching pairs of emojis. Try to complete the game in as few moves as possible.
+
+**What I learned:**
+- CSS 3D card flip animations with perspective
+- Game state management (flipped, matched, locked)
+- Array shuffling with Fisher-Yates algorithm
+- DOM manipulation for dynamic card creation
+- Handling multiple card selections
+- Win condition detection
+- Preventing invalid moves during animations
+- Move counter tracking
+
+---
+
+### Day 17: Generative Art
+Random art generator that creates unique compositions every time! Click to generate new artwork with circles, lines, rectangles, triangles, spirographs, and flow fields.
+
+**What I learned:**
+- Procedural art generation techniques
+- Canvas rotation and translation transforms
+- Spirograph mathematical formulas
+- Flow field visualization
+- Layering shapes with alpha transparency
+- Random color generation with HSL
+- Combining multiple art styles
+- Creating visually pleasing randomness
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
