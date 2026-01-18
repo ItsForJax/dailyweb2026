@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Visualizer - Day 18</title>
+    <link rel="stylesheet" href="day18.css">
+</head>
+<body>
+    <div class="controls">
+        <div class="control-group">
+            <label>Algorithm</label>
+            <select id="algorithm">
+                <option value="bubble">Bubble Sort</option>
+                <option value="selection">Selection Sort</option>
+                <option value="insertion">Insertion Sort</option>
+                <option value="quick">Quick Sort</option>
+                <option value="merge">Merge Sort</option>
+                <option value="heap">Heap Sort</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label>Array Size</label>
+            <input type="range" id="arraySize" min="10" max="200" value="50">
+            <span id="arraySizeValue">50</span>
+        </div>
+        <div class="control-group">
+            <label>Speed</label>
+            <input type="range" id="speed" min="1" max="100" value="50">
+            <span id="speedValue">50</span>
+        </div>
+        <div class="button-group">
+            <button id="generateBtn">New Array</button>
+            <button id="sortBtn">Sort</button>
+            <button id="stopBtn" disabled>Stop</button>
+        </div>
+    </div>
+    <div class="stats">
+        <span>Comparisons: <span id="comparisons">0</span></span>
+        <span>Swaps: <span id="swaps">0</span></span>
+    </div>
+    <div class="container">
+        <canvas id="canvas"></canvas>
+    </div>
+    <script src="day18.js"></script>
+</body>
+</html>
