@@ -247,6 +247,21 @@ Random art generator that creates unique compositions every time! Click to gener
 
 ---
 
+### Day 18: Sorting Algorithm Visualizer
+Watch sorting algorithms in action! Visualize Bubble Sort, Selection Sort, Insertion Sort, Quick Sort, Merge Sort, and Heap Sort with adjustable speed and array size.
+
+**What I learned:**
+- Async/await for step-by-step algorithm visualization
+- Implementing classic sorting algorithms from scratch
+- Color-coded states (comparing, swapping, sorted, pivot)
+- Real-time statistics tracking (comparisons, swaps)
+- Generator-like control flow with sleep delays
+- UI controls for algorithm selection and parameters
+- Canvas bar chart rendering with gradients
+- Responsive design for control panels
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
