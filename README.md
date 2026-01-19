@@ -262,6 +262,34 @@ Watch sorting algorithms in action! Visualize Bubble Sort, Selection Sort, Inser
 
 ---
 
+### Day 19: Bezier Curve Editor
+Interactive bezier curve editor with draggable control points! Switch between quadratic and cubic curves, customize colors, and copy the CSS cubic-bezier output.
+
+**What I learned:**
+- Bezier curve mathematics (quadratic and cubic)
+- Canvas bezierCurveTo and quadraticCurveTo methods
+- Draggable point interaction with hit detection
+- Converting canvas coordinates to normalized 0-1 values
+- Generating CSS cubic-bezier() timing functions
+- Clipboard API for copy functionality
+- Visual feedback with control lines and point labels
+
+---
+
+### Day 20: Kaleidoscope
+Mesmerizing kaleidoscope pattern generator! Draw inside the circle to create symmetrical patterns, or watch the auto mode create spiraling designs.
+
+**What I learned:**
+- Rotational symmetry with canvas transforms
+- Mirror effect using scale(1, -1)
+- Polar coordinate calculations
+- Auto-drawing with spiraling algorithms
+- HSL color cycling for rainbow effects
+- Segment-based pattern replication
+- Combining rotation and reflection transforms
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
