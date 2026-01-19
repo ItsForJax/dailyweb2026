@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bezier Curve Editor - Day 19</title>
+    <link rel="stylesheet" href="day19.css">
+</head>
+<body>
+    <div class="controls">
+        <div class="control-group">
+            <label>Curve Type</label>
+            <select id="curveType">
+                <option value="quadratic">Quadratic</option>
+                <option value="cubic" selected>Cubic</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label>Line Width</label>
+            <input type="range" id="lineWidth" min="1" max="10" value="3">
+        </div>
+        <div class="control-group">
+            <label>Curve Color</label>
+            <input type="color" id="curveColor" value="#4ecdc4">
+        </div>
+        <button id="resetBtn">Reset</button>
+    </div>
+    <div class="info">
+        <span>Drag the control points to shape the curve</span>
+    </div>
+    <div class="code-output">
+        <code id="cssCode">cubic-bezier(0.25, 0.1, 0.25, 1.0)</code>
+        <button id="copyBtn">Copy</button>
+    </div>
+    <canvas id="canvas"></canvas>
+    <script src="day19.js"></script>
+</body>
+</html>
