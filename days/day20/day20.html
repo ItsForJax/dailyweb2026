@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaleidoscope - Day 20</title>
+    <link rel="stylesheet" href="day20.css">
+</head>
+<body>
+    <div class="controls">
+        <div class="control-group">
+            <label>Segments</label>
+            <input type="range" id="segments" min="4" max="16" value="8">
+            <span id="segmentsValue">8</span>
+        </div>
+        <div class="control-group">
+            <label>Speed</label>
+            <input type="range" id="speed" min="1" max="100" value="50">
+        </div>
+        <div class="control-group">
+            <label>Mode</label>
+            <select id="mode">
+                <option value="draw">Draw</option>
+                <option value="auto">Auto</option>
+            </select>
+        </div>
+        <button id="clearBtn">Clear</button>
+    </div>
+    <div class="info">
+        <span id="infoText">Draw inside the circle to create patterns</span>
+    </div>
+    <canvas id="canvas"></canvas>
+    <script src="day20.js"></script>
+</body>
+</html>
