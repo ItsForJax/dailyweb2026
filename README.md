@@ -290,6 +290,20 @@ Mesmerizing kaleidoscope pattern generator! Draw inside the circle to create sym
 
 ---
 
+### Day 21: Pendulum Wave
+Hypnotic pendulum wave simulation! Watch as pendulums with different lengths sync up and create mesmerizing wave patterns that cycle through various formations.
+
+**What I learned:**
+- Simple harmonic motion physics
+- Pendulum period relationship (T = 2π√(L/g))
+- Frequency-based animation timing
+- Trail effects with canvas fade technique
+- Radial gradients for glow effects
+- Phase relationships in oscillating systems
+- The beauty of emergent patterns from simple rules
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
