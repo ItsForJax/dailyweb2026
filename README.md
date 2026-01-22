@@ -304,6 +304,21 @@ Hypnotic pendulum wave simulation! Watch as pendulums with different lengths syn
 
 ---
 
+### Day 22: Breakout
+Classic brick breaker game! Use mouse, touch, or keyboard to control the paddle and break all the bricks. Features lives system, score tracking, and win/lose conditions.
+
+**What I learned:**
+- Brick grid generation and management
+- Ball-paddle collision with angle calculation
+- Ball-brick collision detection and response
+- Determining collision side for proper bounce
+- Game state management (start, playing, paused, gameover, win)
+- Responsive canvas scaling with coordinate transformation
+- Multiple input methods (keyboard, mouse, touch)
+- roundRect for modern styled game elements
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
