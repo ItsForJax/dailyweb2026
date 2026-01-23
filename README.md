@@ -319,6 +319,21 @@ Classic brick breaker game! Use mouse, touch, or keyboard to control the paddle 
 
 ---
 
+### Day 23: Flappy Bird
+Flappy Bird clone using basic shapes! Tap or press space to flap and navigate through pipes. Features high score persistence and smooth bird rotation based on velocity.
+
+**What I learned:**
+- Gravity and velocity-based physics
+- Procedural pipe spawning with gaps
+- AABB collision detection for pipes
+- Bird rotation based on velocity for natural movement
+- Scrolling ground with repeating pattern
+- Drawing game elements with basic canvas shapes (ellipse, arcs, rectangles)
+- High score persistence with localStorage
+- Interval-based obstacle spawning
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
