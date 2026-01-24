@@ -334,6 +334,21 @@ Flappy Bird clone using basic shapes! Tap or press space to flap and navigate th
 
 ---
 
+### Day 24: 2048
+The addictive sliding number puzzle game! Use arrow keys or swipe to combine tiles and reach 2048. Features smooth animations, score tracking, and best score persistence.
+
+**What I learned:**
+- Grid-based game logic with 2D arrays
+- Tile sliding and merging algorithms
+- CSS Grid for game board layout
+- Absolute positioning for animated tiles
+- Touch swipe detection for mobile controls
+- CSS animations for tile appearance and merge effects
+- Win/lose condition detection
+- Continuing gameplay after reaching 2048
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
