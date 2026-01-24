@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048 - Day 24</title>
+    <link rel="stylesheet" href="day24.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="header">
+            <div class="title">2048</div>
+            <div class="scores">
+                <div class="score-box">
+                    <div class="score-label">Score</div>
+                    <div class="score-value" id="score">0</div>
+                </div>
+                <div class="score-box">
+                    <div class="score-label">Best</div>
+                    <div class="score-value" id="best">0</div>
+                </div>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="newGame">New Game</button>
+        </div>
+        <div class="board" id="board"></div>
+        <div class="message hidden" id="message">
+            <div class="message-text" id="messageText">You Win!</div>
+            <button id="continueBtn">Continue</button>
+            <button id="tryAgainBtn">Try Again</button>
+        </div>
+        <div class="instructions">
+            Use arrow keys or swipe to move tiles
+        </div>
+    </div>
+    <script src="day24.js"></script>
+</body>
+</html>

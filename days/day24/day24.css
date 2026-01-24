@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: #1a1a2e;
+    font-family: 'Courier New', monospace;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 340px;
+}
+
+.title {
+    font-size: 42px;
+    font-weight: bold;
+    color: #f9f6f2;
+}
+
+.scores {
+    display: flex;
+    gap: 10px;
+}
+
+.score-box {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 8px 16px;
+    text-align: center;
+    min-width: 70px;
+}
+
+.score-label {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+}
+
+.score-value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.controls {
+    width: 100%;
+    max-width: 340px;
+}
+
+.controls button {
+    padding: 10px 20px;
+    background: #8f7a66;
+    color: #f9f6f2;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.controls button:hover {
+    background: #9f8a76;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    position: relative;
+}
+
+.cell {
+    width: 75px;
+    height: 75px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+}
+
+.tile {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 75px;
+    border-radius: 6px;
+    font-size: 28px;
+    font-weight: bold;
+    transition: top 0.15s ease, left 0.15s ease;
+}
+
+.tile.new {
+    animation: appear 0.2s ease;
+}
+
+.tile.merged {
+    animation: pop 0.2s ease;
+}
+
+@keyframes appear {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.tile-2 { background: #eee4da; color: #776e65; }
+.tile-4 { background: #ede0c8; color: #776e65; }
+.tile-8 { background: #f2b179; color: #f9f6f2; }
+.tile-16 { background: #f59563; color: #f9f6f2; }
+.tile-32 { background: #f67c5f; color: #f9f6f2; }
+.tile-64 { background: #f65e3b; color: #f9f6f2; }
+.tile-128 { background: #edcf72; color: #f9f6f2; font-size: 24px; }
+.tile-256 { background: #edcc61; color: #f9f6f2; font-size: 24px; }
+.tile-512 { background: #edc850; color: #f9f6f2; font-size: 24px; }
+.tile-1024 { background: #edc53f; color: #f9f6f2; font-size: 20px; }
+.tile-2048 { background: #edc22e; color: #f9f6f2; font-size: 20px; }
+.tile-super { background: #3c3a32; color: #f9f6f2; font-size: 16px; }
+
+.message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(26, 26, 46, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    border-radius: 8px;
+    z-index: 10;
+}
+
+.message.hidden {
+    display: none;
+}
+
+.message-text {
+    font-size: 32px;
+    font-weight: bold;
+    color: #f9f6f2;
+}
+
+.message button {
+    padding: 10px 20px;
+    background: #8f7a66;
+    color: #f9f6f2;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.message button:hover {
+    background: #9f8a76;
+}
+
+.instructions {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+}
+
+@media (max-width: 400px) {
+    .game-container {
+        padding: 10px;
+    }
+
+    .title {
+        font-size: 32px;
+    }
+
+    .board {
+        gap: 8px;
+        padding: 8px;
+    }
+
+    .cell, .tile {
+        width: 60px;
+        height: 60px;
+    }
+
+    .tile {
+        font-size: 22px;
+    }
+
+    .tile-128, .tile-256, .tile-512 {
+        font-size: 18px;
+    }
+
+    .tile-1024, .tile-2048 {
+        font-size: 14px;
+    }
+
+    .tile-super {
+        font-size: 12px;
+    }
+}
