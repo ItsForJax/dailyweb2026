@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator - Day 25</title>
+    <link rel="stylesheet" href="day25.css">
+</head>
+<body>
+    <div class="container">
+        <h1>QR Code Generator</h1>
+        <p class="subtitle">Generate QR codes for URLs</p>
+
+        <div class="input-group">
+            <input type="url" id="urlInput" placeholder="Enter URL (e.g., https://example.com)" autocomplete="off">
+            <button id="generateBtn">Generate</button>
+        </div>
+
+        <div class="qr-container" id="qrContainer">
+            <canvas id="qrCanvas"></canvas>
+        </div>
+
+        <div class="options">
+            <div class="option-group">
+                <label>Size</label>
+                <select id="sizeSelect">
+                    <option value="150">Small (150px)</option>
+                    <option value="200" selected>Medium (200px)</option>
+                    <option value="300">Large (300px)</option>
+                </select>
+            </div>
+            <div class="option-group">
+                <label>Color</label>
+                <input type="color" id="colorInput" value="#000000">
+            </div>
+        </div>
+
+        <button id="downloadBtn" class="download-btn" disabled>Download PNG</button>
+    </div>
+    <script src="day25.js"></script>
+</body>
+</html>
