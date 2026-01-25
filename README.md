@@ -349,6 +349,21 @@ The addictive sliding number puzzle game! Use arrow keys or swipe to combine til
 
 ---
 
+### Day 25: QR Code Generator
+Generate QR codes for any URL! Enter a link and get a scannable QR code instantly. Customize size and color, then download as PNG.
+
+**What I learned:**
+- QR code specification and encoding structure
+- Finder patterns, timing patterns, and alignment patterns
+- Data encoding in byte mode with padding
+- Bit manipulation for encoding characters
+- Masking patterns for optimal readability
+- Canvas rendering for pixel-based graphics
+- File download using Data URLs and anchor elements
+- Auto-adding https:// protocol for convenience
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
