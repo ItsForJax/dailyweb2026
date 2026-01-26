@@ -364,6 +364,20 @@ Generate QR codes for any URL! Enter a link and get a scannable QR code instantl
 
 ---
 
+### Day 26: Color Palette Generator
+Generate harmonious color schemes with a single click! Pick a base color and choose from 6 harmony types. Click any color to copy, or export the entire palette as CSS variables or JSON.
+
+**What I learned:**
+- Color theory: complementary, analogous, triadic, split-complementary, tetradic, monochromatic harmonies
+- HSL color space for intuitive color manipulation
+- Converting between HEX, RGB, and HSL color formats
+- Calculating color relationships with hue rotation
+- Clipboard API for copying text and code snippets
+- Generating CSS custom properties programmatically
+- Color naming approximation based on hue/saturation/lightness
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
