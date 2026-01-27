@@ -378,6 +378,20 @@ Generate harmonious color schemes with a single click! Pick a base color and cho
 
 ---
 
+### Day 27: Fourier Drawing
+Draw any shape and watch it recreated using rotating circles! Uses the Discrete Fourier Transform to decompose drawings into circular motion.
+
+**What I learned:**
+- Discrete Fourier Transform (DFT) algorithm implementation
+- Epicycles and complex number representation
+- Converting user drawings into frequency components
+- Amplitude, frequency, and phase relationships
+- Canvas-based drawing with mouse and touch input
+- Sorting frequencies by amplitude for visual clarity
+- Real-time animation of mathematical concepts
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
