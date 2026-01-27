@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fourier Drawing - Day 27</title>
+    <link rel="stylesheet" href="day27.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Fourier Drawing</h1>
+        <p class="subtitle">Draw shapes with rotating circles</p>
+
+        <div class="controls">
+            <button id="clearBtn">Clear</button>
+            <div class="control-group">
+                <label>Circles</label>
+                <input type="range" id="circleCount" min="1" max="100" value="50">
+                <span id="circleValue">50</span>
+            </div>
+            <div class="control-group">
+                <label>Speed</label>
+                <input type="range" id="speed" min="1" max="10" value="3">
+            </div>
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="drawCanvas"></canvas>
+            <canvas id="fourierCanvas"></canvas>
+        </div>
+
+        <p class="hint" id="hint">Draw something on the left canvas!</p>
+    </div>
+    <script src="day27.js"></script>
+</body>
+</html>

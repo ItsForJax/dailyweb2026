@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+    font-family: 'Courier New', monospace;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 900px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 28px;
+    color: #f9f6f2;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: -10px;
+}
+
+.controls {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls button {
+    padding: 10px 24px;
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+    border: 1px solid #ef4444;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.controls button:hover {
+    background: rgba(239, 68, 68, 0.4);
+    transform: translateY(-2px);
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.control-group label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.control-group input[type="range"] {
+    width: 100px;
+    accent-color: #8b5cf6;
+}
+
+.control-group span {
+    font-size: 14px;
+    color: #a78bfa;
+    min-width: 30px;
+}
+
+.canvas-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+canvas {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: crosshair;
+}
+
+.hint {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    canvas {
+        width: 300px;
+        height: 300px;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+}
