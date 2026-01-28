@@ -392,6 +392,20 @@ Draw any shape and watch it recreated using rotating circles! Uses the Discrete 
 
 ---
 
+### Day 28: Gradient Generator
+Create beautiful CSS gradients with a live preview! Supports linear, radial, and conic gradients with multiple color stops and angle control.
+
+**What I learned:**
+- CSS gradient syntax: linear-gradient, radial-gradient, conic-gradient
+- Dynamic color stop management with positions
+- Building intuitive gradient editors
+- Preset system for quick gradient selection
+- Generating copyable CSS output
+- Real-time preview updates
+- Color picker integration with range sliders
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
