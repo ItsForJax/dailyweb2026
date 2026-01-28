@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradient Generator - Day 28</title>
+    <link rel="stylesheet" href="day28.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gradient Generator</h1>
+        <p class="subtitle">Create CSS gradients with live preview</p>
+
+        <div class="preview" id="preview"></div>
+
+        <div class="controls">
+            <div class="control-row">
+                <div class="control-group">
+                    <label>Type</label>
+                    <select id="gradientType">
+                        <option value="linear">Linear</option>
+                        <option value="radial">Radial</option>
+                        <option value="conic">Conic</option>
+                    </select>
+                </div>
+                <div class="control-group" id="angleGroup">
+                    <label>Angle</label>
+                    <input type="range" id="angle" min="0" max="360" value="90">
+                    <span id="angleValue">90°</span>
+                </div>
+            </div>
+
+            <div class="colors-section">
+                <label>Color Stops</label>
+                <div class="color-stops" id="colorStops"></div>
+                <button id="addColor" class="add-btn">+ Add Color</button>
+            </div>
+        </div>
+
+        <div class="output">
+            <code id="cssOutput"></code>
+            <button id="copyBtn">Copy CSS</button>
+        </div>
+
+        <div class="presets">
+            <label>Presets</label>
+            <div class="preset-buttons" id="presetButtons"></div>
+        </div>
+
+        <div class="toast" id="toast">Copied!</div>
+    </div>
+    <script src="day28.js"></script>
+</body>
+</html>
