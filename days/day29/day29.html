@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whack-a-Mole - Day 29</title>
+    <link rel="stylesheet" href="day29.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Whack-a-Mole</h1>
+
+        <div class="stats">
+            <div class="stat">
+                <span class="label">Score</span>
+                <span class="value" id="score">0</span>
+            </div>
+            <div class="stat">
+                <span class="label">Time</span>
+                <span class="value" id="time">30</span>
+            </div>
+            <div class="stat">
+                <span class="label">Best</span>
+                <span class="value" id="best">0</span>
+            </div>
+        </div>
+
+        <div class="game-board" id="gameBoard">
+            <div class="hole" data-hole="0"><div class="mole"></div></div>
+            <div class="hole" data-hole="1"><div class="mole"></div></div>
+            <div class="hole" data-hole="2"><div class="mole"></div></div>
+            <div class="hole" data-hole="3"><div class="mole"></div></div>
+            <div class="hole" data-hole="4"><div class="mole"></div></div>
+            <div class="hole" data-hole="5"><div class="mole"></div></div>
+            <div class="hole" data-hole="6"><div class="mole"></div></div>
+            <div class="hole" data-hole="7"><div class="mole"></div></div>
+            <div class="hole" data-hole="8"><div class="mole"></div></div>
+        </div>
+
+        <button id="startBtn">Start Game</button>
+
+        <div class="overlay" id="overlay">
+            <div class="overlay-content">
+                <h2 id="overlayTitle">Game Over!</h2>
+                <p>Score: <span id="finalScore">0</span></p>
+                <button id="playAgainBtn">Play Again</button>
+            </div>
+        </div>
+    </div>
+    <script src="day29.js"></script>
+</body>
+</html>
