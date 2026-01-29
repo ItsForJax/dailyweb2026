@@ -406,6 +406,20 @@ Create beautiful CSS gradients with a live preview! Supports linear, radial, and
 
 ---
 
+### Day 29: Whack-a-Mole
+Classic arcade reaction game! Whack moles as they pop up from holes to score points before time runs out.
+
+**What I learned:**
+- Random timing for game elements
+- CSS animations for mole pop-up effects
+- Touch and click event handling for mobile
+- Game timer and scoring systems
+- Preventing same-hole consecutive spawns
+- LocalStorage for high score persistence
+- Visual feedback for successful hits
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
