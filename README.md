@@ -420,6 +420,21 @@ Classic arcade reaction game! Whack moles as they pop up from holes to score poi
 
 ---
 
+### Day 30: Tetris
+The classic falling blocks puzzle game! Complete lines to score points and level up. Features ghost piece preview and mobile controls.
+
+**What I learned:**
+- Tetromino shapes and rotation systems
+- Grid-based collision detection
+- Wall kick mechanics for rotation
+- Line clearing with array manipulation
+- Ghost piece rendering for drop preview
+- Level progression with increasing speed
+- Next piece preview system
+- Keyboard and touch controls
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
