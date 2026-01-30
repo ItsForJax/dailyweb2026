@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris - Day 30</title>
+    <link rel="stylesheet" href="day30.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tetris</h1>
+
+        <div class="game-wrapper">
+            <div class="side-panel left">
+                <div class="panel-section">
+                    <span class="label">Score</span>
+                    <span class="value" id="score">0</span>
+                </div>
+                <div class="panel-section">
+                    <span class="label">Lines</span>
+                    <span class="value" id="lines">0</span>
+                </div>
+                <div class="panel-section">
+                    <span class="label">Level</span>
+                    <span class="value" id="level">1</span>
+                </div>
+            </div>
+
+            <canvas id="gameCanvas"></canvas>
+
+            <div class="side-panel right">
+                <div class="panel-section">
+                    <span class="label">Next</span>
+                    <canvas id="nextCanvas"></canvas>
+                </div>
+                <div class="panel-section">
+                    <span class="label">Best</span>
+                    <span class="value small" id="best">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls-info">
+            <span>← → Move</span>
+            <span>↑ Rotate</span>
+            <span>↓ Soft Drop</span>
+            <span>Space Hard Drop</span>
+        </div>
+
+        <div class="mobile-controls" id="mobileControls">
+            <button id="leftBtn">←</button>
+            <button id="rotateBtn">↻</button>
+            <button id="downBtn">↓</button>
+            <button id="rightBtn">→</button>
+            <button id="dropBtn">⤓</button>
+        </div>
+
+        <button id="startBtn">Start Game</button>
+
+        <div class="overlay" id="overlay">
+            <div class="overlay-content">
+                <h2>Game Over</h2>
+                <p>Score: <span id="finalScore">0</span></p>
+                <button id="restartBtn">Play Again</button>
+            </div>
+        </div>
+    </div>
+    <script src="day30.js"></script>
+</body>
+</html>
