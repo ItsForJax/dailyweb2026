@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 31 - Pixel Art Editor</title>
+    <link rel="stylesheet" href="day31.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Pixel Art Editor</h1>
+
+        <div class="toolbar">
+            <div class="tool-group">
+                <label>Color:</label>
+                <input type="color" id="colorPicker" value="#000000">
+            </div>
+
+            <div class="tool-group">
+                <label>Grid:</label>
+                <select id="gridSize">
+                    <option value="8">8x8</option>
+                    <option value="16" selected>16x16</option>
+                    <option value="32">32x32</option>
+                    <option value="64">64x64</option>
+                </select>
+            </div>
+
+            <div class="tool-group tools">
+                <button id="pencilTool" class="tool-btn active" title="Pencil">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                </button>
+                <button id="eraserTool" class="tool-btn" title="Eraser">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.14 3c-.51 0-1.02.2-1.41.59L2.59 14.73c-.78.78-.78 2.05 0 2.83l3.85 3.85c.78.78 2.05.78 2.83 0L20.41 10.27c.78-.78.78-2.05 0-2.83L16.55 3.59c-.39-.39-.9-.59-1.41-.59z"/></svg>
+                </button>
+                <button id="fillTool" class="tool-btn" title="Fill">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.56 8.94L7.62 0 6.21 1.41l2.38 2.38-5.15 5.15c-.59.59-.59 1.54 0 2.12l5.5 5.5c.29.29.68.44 1.06.44s.77-.15 1.06-.44l5.5-5.5c.59-.58.59-1.53 0-2.12zM5.21 10L10 5.21 14.79 10H5.21zM19 11.5s-2 2.17-2 3.5c0 1.1.9 2 2 2s2-.9 2-2c0-1.33-2-3.5-2-3.5z"/></svg>
+                </button>
+            </div>
+
+            <div class="tool-group">
+                <button id="clearBtn" class="action-btn">Clear</button>
+                <button id="downloadBtn" class="action-btn primary">Download</button>
+            </div>
+        </div>
+
+        <div class="palette">
+            <div class="palette-color" style="background: #000000" data-color="#000000"></div>
+            <div class="palette-color" style="background: #ffffff" data-color="#ffffff"></div>
+            <div class="palette-color" style="background: #ff0000" data-color="#ff0000"></div>
+            <div class="palette-color" style="background: #ff6b00" data-color="#ff6b00"></div>
+            <div class="palette-color" style="background: #ffff00" data-color="#ffff00"></div>
+            <div class="palette-color" style="background: #00ff00" data-color="#00ff00"></div>
+            <div class="palette-color" style="background: #00ffff" data-color="#00ffff"></div>
+            <div class="palette-color" style="background: #0000ff" data-color="#0000ff"></div>
+            <div class="palette-color" style="background: #ff00ff" data-color="#ff00ff"></div>
+            <div class="palette-color" style="background: #8b4513" data-color="#8b4513"></div>
+            <div class="palette-color" style="background: #808080" data-color="#808080"></div>
+            <div class="palette-color" style="background: #ffc0cb" data-color="#ffc0cb"></div>
+        </div>
+
+        <div class="canvas-wrapper">
+            <canvas id="pixelCanvas"></canvas>
+        </div>
+
+        <p class="hint">Click and drag to draw. Right-click to erase.</p>
+    </div>
+
+    <script src="day31.js"></script>
+</body>
+</html>
