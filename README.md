@@ -435,6 +435,21 @@ The classic falling blocks puzzle game! Complete lines to score points and level
 
 ---
 
+### Day 31: Pixel Art Editor
+Create pixel art on a customizable grid! Features pencil, eraser, and fill tools with a color palette. Export your creations as PNG images.
+
+**What I learned:**
+- Grid-based drawing with canvas
+- Flood fill algorithm using stack-based iteration
+- Tool switching patterns (pencil, eraser, fill)
+- Right-click for quick erase functionality
+- Exporting canvas as downloadable PNG
+- Touch and mouse event handling for drawing
+- Dynamic grid sizing with pixel scaling
+- Color palette with visual selection feedback
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
