@@ -305,7 +305,7 @@ class Minesweeper {
             const displayElement = document.getElementById(`${type}-display-${i + 1}`);
 
             // Update image source to individual PNG files
-            displayElement.src = `assets/${digit}.png`;
+            displayElement.src = `../../assets/${digit}.png`;
             displayElement.alt = digit;
         }
     }
@@ -316,13 +316,13 @@ class Minesweeper {
 
         // Use separate PNG images for each state
         if (state === 'lost') {
-            img.src = 'assets/sad.png';
+            img.src = '../../assets/sad.png';
         } else if (state === 'won') {
-            img.src = 'assets/smile.png'; // Keep smiling when won
+            img.src = '../../assets/smile.png'; // Keep smiling when won
         } else if (state === 'shocked') {
-            img.src = 'assets/shocked.png'; // Shocked when clicking
+            img.src = '../../assets/shocked.png'; // Shocked when clicking
         } else {
-            img.src = 'assets/smile.png'; // Normal smile
+            img.src = '../../assets/smile.png'; // Normal smile
         }
     }
 }
