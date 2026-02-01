@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 32 - Typing Speed Test</title>
+    <link rel="stylesheet" href="day32.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Typing Speed Test</h1>
+
+        <div class="text-display" id="textDisplay"></div>
+
+        <input type="text" id="input" placeholder="Start typing..." autocomplete="off" autofocus>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value" id="wpm">0</div>
+                <div class="stat-label">WPM</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="accuracy">100</div>
+                <div class="stat-label">% Accuracy</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="time">60</div>
+                <div class="stat-label">Seconds</div>
+            </div>
+        </div>
+
+        <button id="restartBtn">Restart</button>
+    </div>
+
+    <script src="day32.js"></script>
+</body>
+</html>
