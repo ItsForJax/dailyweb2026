@@ -450,6 +450,20 @@ Create pixel art on a customizable grid! Features pencil, eraser, and fill tools
 
 ---
 
+### Day 32: Typing Speed Test
+Test your typing speed with random sentences! See your WPM and accuracy in real-time with a 60-second countdown timer.
+
+**What I learned:**
+- Real-time input validation and character comparison
+- WPM calculation (words = characters / 5)
+- Accuracy tracking with correct vs total characters
+- Timer implementation with setInterval
+- Visual feedback with color-coded characters (correct, incorrect, current)
+- Input event handling for live updates
+- Disabling input on test completion
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
