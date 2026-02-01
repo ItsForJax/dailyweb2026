@@ -3,517 +3,309 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Designs 2026</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="days/day2/day2.css">
-    <link rel="stylesheet" href="days/day3/day3.css">
-    <link rel="stylesheet" href="days/day4/day4.css">
+    <title>Daily Web 2026</title>
     <style>
-        .snap-container {
-            scroll-snap-type: y mandatory;
-            overflow-y: scroll;
-            height: 100vh;
-        }
-        
-        .snap-section {
-            scroll-snap-align: start;
-            height: 100vh;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .toggle-letter {
+        body {
+            background: #111;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+        }
+
+        .month-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .month-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px 16px;
+            text-align: center;
             cursor: pointer;
-            user-select: none;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            text-shadow: 
-                1px 1px 0 #1a202c,
-                2px 2px 0 #1a202c,
-                3px 3px 0 #1a202c,
-                4px 4px 0 #0f1419,
-                5px 5px 0 #0f1419,
-                6px 6px 0 #0a0e12,
-                7px 7px 0 #0a0e12,
-                8px 8px 0 #05070a,
-                9px 9px 0 #05070a,
-                10px 10px 0 #000000,
-                11px 11px 0 #000000,
-                12px 12px 0 #000000,
-                13px 13px 8px rgba(0, 0, 0, 0.4),
-                14px 14px 10px rgba(0, 0, 0, 0.3),
-                15px 15px 12px rgba(0, 0, 0, 0.2);
-            transform-style: preserve-3d;
-            perspective: 1000px;
+            transition: all 0.2s ease;
         }
 
-        .toggle-letter.active {
-            text-shadow: 
-                0 0 10px rgba(96, 165, 250, 1),
-                0 0 20px rgba(96, 165, 250, 0.8),
-                0 0 30px rgba(96, 165, 250, 0.6),
-                0 0 40px rgba(96, 165, 250, 0.4),
-                1px 1px 0 #3b82f6,
-                2px 2px 0 #2563eb,
-                3px 3px 0 #2563eb,
-                4px 4px 0 #1e40af,
-                5px 5px 0 #1e40af,
-                6px 6px 0 #1e3a8a,
-                7px 7px 0 #1e3a8a,
-                8px 8px 0 #172554,
-                9px 9px 0 #172554,
-                10px 10px 0 #0c1844,
-                11px 11px 0 #0c1844,
-                12px 12px 0 #000000,
-                13px 13px 8px rgba(59, 130, 246, 0.6),
-                14px 14px 12px rgba(37, 99, 235, 0.4),
-                15px 15px 15px rgba(29, 78, 216, 0.3);
-            transform: translateY(-12px) scale(1.05);
+        .month-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
-        .toggle-letter.active {
-            animation: glow-pulse 2s ease-in-out infinite;
+        .month-card.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
         }
 
-        @keyframes glow-pulse {
-            0%, 100% {
-                filter: brightness(1) drop-shadow(0 0 30px rgba(96, 165, 250, 0.5));
+        .month-card.disabled:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .month-card.current {
+            border-color: #fff;
+        }
+
+        .month-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .month-days {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 8px;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            z-index: 100;
+            display: none;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .days-container {
+            display: none;
+            height: 100vh;
+            overflow-y: auto;
+            scroll-snap-type: y mandatory;
+        }
+
+        .days-container.active {
+            display: block;
+        }
+
+        .day-section {
+            height: 100vh;
+            scroll-snap-align: start;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+        }
+
+        .day-section iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .day-label {
+            position: absolute;
+            bottom: 24px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            z-index: 10;
+        }
+
+        .home-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .home-container.hidden {
+            display: none;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .title h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .title p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1rem;
+        }
+
+        .progress-bar {
+            max-width: 400px;
+            margin: 0 auto 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 6px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #fff;
+            border-radius: 10px;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 500px) {
+            .title h1 {
+                font-size: 1.8rem;
             }
-            50% {
-                filter: brightness(1.2) drop-shadow(0 0 50px rgba(96, 165, 250, 0.8));
-            }
-        }
 
-        @keyframes fade-in {
-            from {
-                opacity: 0;
-                transform: translateY(-10px) scale(0.95);
+            .month-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
 
-        .animate-fade-in {
-            animation: fade-in 0.3s ease-out forwards;
+            .month-card {
+                padding: 16px 8px;
+            }
+
+            .month-name {
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
-<body class="bg-gray-900">
-    <div class="snap-container">
-        
-        <section class="snap-section flex items-center justify-center bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 relative">
-            <div class="absolute top-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Click each number to toggle
-            </div>
+<body>
 
-            <div class="relative px-4">
-                <div class="flex justify-center items-center">
-                    <span class="toggle-letter relative inline-block font-black text-[4.5rem] sm:text-[8rem] md:text-[12rem] lg:text-[14rem] text-gray-700 -mr-2 sm:-mr-4 md:-mr-6" data-letter="2">2</span>
-                    <span class="toggle-letter relative inline-block font-black text-[4.5rem] sm:text-[8rem] md:text-[12rem] lg:text-[14rem] text-gray-700 -mr-2 sm:-mr-4 md:-mr-6" data-letter="0">0</span>
-                    <span class="toggle-letter relative inline-block font-black text-[4.5rem] sm:text-[8rem] md:text-[12rem] lg:text-[14rem] text-gray-700 -mr-2 sm:-mr-4 md:-mr-6" data-letter="2">2</span>
-                    <span class="toggle-letter relative inline-block font-black text-[4.5rem] sm:text-[8rem] md:text-[12rem] lg:text-[14rem] text-gray-700" data-letter="6">6</span>
-                </div>
-            </div>
+    <button class="back-btn" id="backBtn">← Back</button>
 
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 1 of 365
-            </div>
-        </section>
+    <div class="home-container" id="homeContainer">
+        <div class="title">
+            <h1>Daily Web 2026</h1>
+            <p>A web project every day</p>
+        </div>
 
-        <section id="day2" class="snap-section flex items-center justify-center relative overflow-hidden bg-black">
-            <div id="vertical-center">
-                <div id="clock-container">
-                    <div id="display-1" class="display-container display-size-12 display-no-0">
-                        <div class="segment-x segment-a"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-b"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-c"><span class="segment-border"></span></div>
-                        <div class="segment-x segment-d"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-e"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-f"><span class="segment-border"></span></div>
-                        <div class="segment-x segment-g"><span class="segment-border"></span></div>
-                    </div>
-                    <div id="display-2" class="display-container display-size-12 display-no-1">
-                        <div class="segment-x segment-a"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-b"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-c"><span class="segment-border"></span></div>
-                        <div class="segment-x segment-d"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-e"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-f"><span class="segment-border"></span></div>
-                        <div class="segment-x segment-g"><span class="segment-border"></span></div>
-                    </div>
-                    <div id="display-3" class="display-container display-size-12 display-no-2">
-                        <div class="segment-x segment-a"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-b"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-c"><span class="segment-border"></span></div>
-                        <div class="segment-x segment-d"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-e"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-f"><span class="segment-border"></span></div>
-                        <div class="segment-x segment-g"><span class="segment-border"></span></div>
-                    </div>
-                    <div id="display-4" class="display-container display-size-12 display-no-3">
-                        <div class="segment-x segment-a"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-b"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-c"><span class="segment-border"></span></div>
-                        <div class="segment-x segment-d"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-e"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-f"><span class="segment-border"></span></div>
-                        <div class="segment-x segment-g"><span class="segment-border"></span></div>
-                    </div>
-                    <div id="display-5" class="display-container display-size-12 display-no-4">
-                        <div class="segment-x segment-a"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-b"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-c"><span class="segment-border"></span></div>
-                        <div class="segment-x segment-d"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-e"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-f"><span class="segment-border"></span></div>
-                        <div class="segment-x segment-g"><span class="segment-border"></span></div>
-                    </div>
-                    <div id="display-6" class="display-container display-size-12 display-no-5">
-                        <div class="segment-x segment-a"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-b"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-c"><span class="segment-border"></span></div>
-                        <div class="segment-x segment-d"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-e"><span class="segment-border"></span></div>
-                        <div class="segment-y segment-f"><span class="segment-border"></span></div>
-                        <div class="segment-x segment-g"><span class="segment-border"></span></div>
-                    </div>
-                </div>
-            </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-text" id="progressText"></div>
 
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 2 of 365
-            </div>
-        </section>
-
-        <section id="day3" class="snap-section flex items-center justify-center relative bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900">
-            <div class="windows-window">
-                <div class="window-titlebar">
-                    <div class="window-title">
-                        <svg class="window-icon" viewBox="0 0 16 16" fill="white">
-                            <rect x="2" y="2" width="5" height="5"/>
-                            <rect x="9" y="2" width="5" height="5"/>
-                            <rect x="2" y="9" width="5" height="5"/>
-                            <rect x="9" y="9" width="5" height="5"/>
-                        </svg>
-                        <span>Minesweeper</span>
-                    </div>
-                    <div class="window-controls">
-                        <button class="window-button minimize"></button>
-                        <button class="window-button close"></button>
-                    </div>
-                </div>
-                <div class="window-content">
-                    <div class="minesweeper-container">
-                        <div class="game-board">
-                            <div class="game-header">
-                                <div class="mines-counter">
-                                    <img id="mines-display-1" class="display-digit" src="assets/0.png" alt="0">
-                                    <img id="mines-display-2" class="display-digit" src="assets/1.png" alt="1">
-                                    <img id="mines-display-3" class="display-digit" src="assets/0.png" alt="0">
-                                </div>
-
-                                <button id="reset-button" class="reset-button">
-                                    <img src="assets/smile.png" alt="Reset">
-                                </button>
-
-                                <div class="timer-counter">
-                                    <img id="timer-display-1" class="display-digit" src="assets/0.png" alt="0">
-                                    <img id="timer-display-2" class="display-digit" src="assets/0.png" alt="0">
-                                    <img id="timer-display-3" class="display-digit" src="assets/0.png" alt="0">
-                                </div>
-                            </div>
-
-                            <div id="mine-grid" class="mine-grid"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 3 of 365
-            </div>
-        </section>
-
-        <section id="day4" class="snap-section flex items-center justify-center relative overflow-hidden bg-black">
-            <div class="absolute top-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Click to add DVD logos (max 10)
-            </div>
-
-            <img id="dvd-logo" class="dvd-logo" src="assets/dvd.png" alt="DVD Logo">
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 4 of 365
-            </div>
-        </section>
-
-        <section id="day5" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day5/day5.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 5 of 365
-            </div>
-        </section>
-
-        <section id="day6" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day6/day6.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 6 of 365
-            </div>
-        </section>
-
-        <section id="day7" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day7/day7.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 7 of 365
-            </div>
-        </section>
-
-        <section id="day8" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day8/day8.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 8 of 365
-            </div>
-        </section>
-
-        <section id="day9" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day9/day9.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 9 of 365
-            </div>
-        </section>
-
-        <section id="day10" class="snap-section flex items-center justify-center relative bg-white">
-            <iframe src="days/day10/day10.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-gray-600 text-xs sm:text-sm">
-                Day 10 of 365
-            </div>
-        </section>
-
-        <section id="day11" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day11/day11.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 11 of 365
-            </div>
-        </section>
-
-        <section id="day12" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day12/day12.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 12 of 365
-            </div>
-        </section>
-
-        <section id="day13" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day13/day13.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 13 of 365
-            </div>
-        </section>
-
-        <section id="day14" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day14/day14.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 14 of 365
-            </div>
-        </section>
-
-        <section id="day15" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day15/day15.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 15 of 365
-            </div>
-        </section>
-
-        <section id="day16" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day16/day16.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 16 of 365
-            </div>
-        </section>
-
-        <section id="day17" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day17/day17.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 17 of 365
-            </div>
-        </section>
-
-        <section id="day18" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day18/day18.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 18 of 365
-            </div>
-        </section>
-
-        <section id="day19" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day19/day19.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 19 of 365
-            </div>
-        </section>
-
-        <section id="day20" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day20/day20.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 20 of 365
-            </div>
-        </section>
-
-        <section id="day21" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day21/day21.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 21 of 365
-            </div>
-        </section>
-
-        <section id="day22" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day22/day22.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 22 of 365
-            </div>
-        </section>
-
-        <section id="day23" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day23/day23.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 23 of 365
-            </div>
-        </section>
-
-        <section id="day24" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day24/day24.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 24 of 365
-            </div>
-        </section>
-
-        <section id="day25" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day25/day25.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 25 of 365
-            </div>
-        </section>
-
-        <section id="day26" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day26/day26.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 26 of 365
-            </div>
-        </section>
-
-        <section id="day27" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day27/day27.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 27 of 365
-            </div>
-        </section>
-
-        <section id="day28" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day28/day28.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 28 of 365
-            </div>
-        </section>
-
-        <section id="day29" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day29/day29.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 29 of 365
-            </div>
-        </section>
-
-        <section id="day30" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day30/day30.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 30 of 365
-            </div>
-        </section>
-
-        <section id="day31" class="snap-section flex items-center justify-center relative bg-black">
-            <iframe src="days/day31/day31.html" class="w-full h-full border-0"></iframe>
-
-            <div class="absolute bottom-6 left-0 right-0 text-center text-white/40 text-xs sm:text-sm">
-                Day 31 of 365
-            </div>
-        </section>
-
+        <div class="month-grid" id="monthGrid"></div>
     </div>
 
+    <div class="days-container" id="daysContainer"></div>
+
     <script>
-        const letters = document.querySelectorAll('.toggle-letter');
-        
-        letters.forEach(letter => {
-            letter.addEventListener('click', function() {
-                this.classList.toggle('active');
-                
-                this.style.transform = this.classList.contains('active') 
-                    ? 'translateY(-12px) scale(1.05)' 
-                    : 'translateY(0) scale(1)';
-            });
-            
-            letter.addEventListener('mouseenter', function() {
-                if (!this.classList.contains('active')) {
-                    this.style.transform = 'translateY(-6px) scale(1.02)';
-                }
-            });
-            
-            letter.addEventListener('mouseleave', function() {
-                if (!this.classList.contains('active')) {
-                    this.style.transform = 'translateY(0) scale(1)';
-                }
-            });
+        const months = [
+            { name: 'January', days: 31, startDay: 1 },
+            { name: 'February', days: 28, startDay: 32 },
+            { name: 'March', days: 31, startDay: 60 },
+            { name: 'April', days: 30, startDay: 91 },
+            { name: 'May', days: 31, startDay: 121 },
+            { name: 'June', days: 30, startDay: 152 },
+            { name: 'July', days: 31, startDay: 182 },
+            { name: 'August', days: 31, startDay: 213 },
+            { name: 'September', days: 30, startDay: 244 },
+            { name: 'October', days: 31, startDay: 274 },
+            { name: 'November', days: 30, startDay: 305 },
+            { name: 'December', days: 31, startDay: 335 }
+        ];
+
+        const TOTAL_DAYS_COMPLETED = 31;
+
+        const monthGrid = document.getElementById('monthGrid');
+        const homeContainer = document.getElementById('homeContainer');
+        const daysContainer = document.getElementById('daysContainer');
+        const backBtn = document.getElementById('backBtn');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+
+        const progressPercent = (TOTAL_DAYS_COMPLETED / 365) * 100;
+        progressFill.style.width = progressPercent.toFixed(1) + '%';
+        progressText.textContent = `${TOTAL_DAYS_COMPLETED} / 365 days`;
+
+        months.forEach((month, index) => {
+            const card = document.createElement('div');
+            card.className = 'month-card';
+
+            const endDay = month.startDay + month.days - 1;
+            const completedInMonth = Math.max(0, Math.min(month.days, TOTAL_DAYS_COMPLETED - month.startDay + 1));
+            const hasContent = completedInMonth > 0;
+
+            if (!hasContent) {
+                card.classList.add('disabled');
+            }
+
+            if (TOTAL_DAYS_COMPLETED >= month.startDay && TOTAL_DAYS_COMPLETED <= endDay) {
+                card.classList.add('current');
+            }
+
+            card.innerHTML = `
+                <div class="month-name">${month.name}</div>
+                <div class="month-days">${hasContent ? completedInMonth + ' / ' + month.days : '—'}</div>
+            `;
+
+            if (hasContent) {
+                card.addEventListener('click', () => showMonth(index));
+            }
+
+            monthGrid.appendChild(card);
         });
 
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                letters.forEach((letter, index) => {
-                    setTimeout(() => {
-                        letter.classList.add('active');
-                        setTimeout(() => {
-                            letter.classList.remove('active');
-                        }, 500);
-                    }, index * 200);
-                });
-            }, 500);
-        });
+        function showMonth(monthIndex) {
+            const month = months[monthIndex];
+            const endDay = Math.min(month.startDay + month.days - 1, TOTAL_DAYS_COMPLETED);
 
-        let touchStartY = 0;
-        let touchEndY = 0;
-        
-        document.querySelector('.snap-container').addEventListener('touchstart', (e) => {
-            touchStartY = e.changedTouches[0].screenY;
-        });
-        
-        document.querySelector('.snap-container').addEventListener('touchend', (e) => {
-            touchEndY = e.changedTouches[0].screenY;
-        });
+            daysContainer.innerHTML = '';
+
+            for (let day = month.startDay; day <= endDay; day++) {
+                const section = document.createElement('div');
+                section.className = 'day-section';
+                section.id = `day${day}`;
+
+                section.innerHTML = `
+                    <iframe src="days/day${day}/day${day}.html" loading="lazy"></iframe>
+                    <div class="day-label">Day ${day} · ${month.name} ${day - month.startDay + 1}</div>
+                `;
+
+                daysContainer.appendChild(section);
+            }
+
+            homeContainer.classList.add('hidden');
+            daysContainer.classList.add('active');
+            backBtn.style.display = 'block';
+            daysContainer.scrollTop = 0;
+        }
+
+        function showHome() {
+            homeContainer.classList.remove('hidden');
+            daysContainer.classList.remove('active');
+            backBtn.style.display = 'none';
+            daysContainer.innerHTML = '';
+        }
+
+        backBtn.addEventListener('click', showHome);
+        window.addEventListener('popstate', showHome);
     </script>
-    <script src="days/day2/day2.js"></script>
-    <script src="days/day3/day3.js"></script>
-    <script src="days/day4/day4.js"></script>
 </body>
 </html>
