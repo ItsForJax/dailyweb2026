@@ -63,35 +63,35 @@
 }
 
 .display-container.display-size-12 .segment-a {
-	top: 0;
+	top: -24px;
 }
 
 .display-container.display-size-12 .segment-b {
-	top: 13px;
-	left: 74px;
+	top: -10px;
+	left: 99px;
 }
 
 .display-container.display-size-12 .segment-c {
-	top: 87px;
-	left: 74px;
+	top: 90px;
+	left: 99px;
 }
 
 .display-container.display-size-12 .segment-d {
-	top: 148px;
+	top: 176px;
 }
 
 .display-container.display-size-12 .segment-e {
-	top: 87px;
+	top: 90px;
 	left: 0px;
 }
 
 .display-container.display-size-12 .segment-f {
-	top: 13px;
-	left: 0px;
+	top: -10px;
+	left: -1px;
 }
 
 .display-container.display-size-12 .segment-g {
-	top: 74px;
+	top: 76px;
 }
 
 .display-no-1 .segment-a,
