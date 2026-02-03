@@ -464,6 +464,33 @@ Test your typing speed with random sentences! See your WPM and accuracy in real-
 
 ---
 
+### Day 33: Stopwatch
+A functional stopwatch with start/stop, lap times, and reset. Track multiple laps with millisecond precision.
+
+**What I learned:**
+- High-precision timing with Date.now()
+- Calculating elapsed time with pause/resume support
+- Formatting time into hours, minutes, seconds, milliseconds
+- Dynamic DOM creation for lap entries
+- Button state management (enabled/disabled)
+- Toggle button behavior (start/stop in one button)
+
+---
+
+### Day 34: Etch-a-Sketch
+Classic drawing toy! Move your mouse or drag to draw lines. Shake your device or press space to clear the canvas.
+
+**What I learned:**
+- Canvas drawing with mouse and touch events
+- Line drawing with moveTo and lineTo
+- Coordinate transformation for scaled canvas
+- Device motion API for shake detection
+- CSS shake animation with keyframes
+- Preventing default touch behavior for canvas drawing
+- Cross-platform input handling (mouse + touch)
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
