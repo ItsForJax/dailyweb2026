@@ -491,6 +491,21 @@ Classic drawing toy! Move your mouse or drag to draw lines. Shake your device or
 
 ---
 
+### Day 35: Markdown Previewer
+Split-pane markdown editor with live preview! Type markdown on the left, see rendered HTML on the right. Features a resizable divider and toolbar for quick formatting.
+
+**What I learned:**
+- Regex-based markdown parsing (headings, bold, italic, code, links, tables, task lists)
+- Split-pane layout with draggable divider
+- Textarea selection manipulation for toolbar insert actions
+- Tab key capture for code indentation
+- Fenced code block parsing with multi-line regex
+- Table parsing with header/body separation
+- Wrapping loose text in paragraph tags while skipping block elements
+- Window-chrome UI pattern (traffic lights, title bar) for embedded apps
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
