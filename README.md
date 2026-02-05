@@ -506,6 +506,21 @@ Split-pane markdown editor with live preview! Type markdown on the left, see ren
 
 ---
 
+### Day 36: Calculator
+A functional calculator inspired by the macOS Calculator app. Supports basic arithmetic, percentage, sign toggle, and full keyboard input.
+
+**What I learned:**
+- Calculator state machine (current, previous, operator)
+- Chaining operations without pressing equals
+- Number formatting with toLocaleString for comma separators
+- Handling edge cases (division by zero, decimal precision)
+- Keyboard event mapping to calculator actions
+- Backspace support for correcting input
+- Active operator highlighting with CSS class toggling
+- Responsive font sizing based on digit count
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
