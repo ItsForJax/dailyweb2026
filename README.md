@@ -521,6 +521,21 @@ A functional calculator inspired by the macOS Calculator app. Supports basic ari
 
 ---
 
+### Day 37: Hangman
+Classic word guessing game with a tech/programming theme! Guess letters to reveal the word before the hangman is fully drawn. Includes hints, keyboard input, and an on-screen keyboard.
+
+**What I learned:**
+- Canvas drawing for the hangman figure (step-by-step reveal)
+- Game state management with Set for tracking guesses
+- On-screen keyboard with visual feedback (correct/wrong)
+- Physical keyboard event handling for letter input
+- Win/lose condition detection
+- Word reveal animation on game over
+- Random word selection from a themed word bank
+- Separating gallows drawing from figure drawing
+
+---
+
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks!)
