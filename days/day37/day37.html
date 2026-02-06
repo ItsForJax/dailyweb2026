@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 37 - Hangman</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #111;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .game {
+            width: 420px;
+            max-width: 95vw;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #e0e0e0;
+        }
+
+        .hangman-canvas {
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        .word {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .letter-slot {
+            width: 32px;
+            height: 42px;
+            border-bottom: 3px solid #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: border-color 0.2s;
+        }
+
+        .letter-slot.revealed {
+            border-color: #4ade80;
+            color: #4ade80;
+        }
+
+        .letter-slot.wrong {
+            border-color: #ef4444;
+            color: #ef4444;
+        }
+
+        .hint {
+            color: #666;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+            min-height: 1.2em;
+        }
+
+        .keyboard {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .key {
+            width: 36px;
+            height: 40px;
+            background: #2a2a2a;
+            border: 1px solid #3a3a3a;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .key:hover:not(.used) {
+            background: #3a3a3a;
+            border-color: #555;
+        }
+
+        .key.correct {
+            background: #166534;
+            border-color: #4ade80;
+            color: #4ade80;
+            cursor: default;
+        }
+
+        .key.wrong {
+            background: #1a1a1a;
+            border-color: #333;
+            color: #444;
+            cursor: default;
+        }
+
+        .status {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 16px;
+        }
+
+        .status span {
+            color: #ef4444;
+            font-weight: 600;
+        }
+
+        .message {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            min-height: 1.5em;
+        }
+
+        .message.win { color: #4ade80; }
+        .message.lose { color: #ef4444; }
+
+        .new-game {
+            background: #2a2a2a;
+            border: 1px solid #3a3a3a;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.15s;
+            font-family: inherit;
+            display: none;
+        }
+
+        .new-game:hover {
+            background: #3a3a3a;
+        }
+
+        .new-game.visible {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="game">
+    <h1>Hangman</h1>
+    <canvas class="hangman-canvas" id="canvas" width="200" height="180"></canvas>
+    <div class="word" id="word"></div>
+    <div class="hint" id="hint"></div>
+    <div class="status">Guesses left: <span id="guessesLeft">6</span></div>
+    <div class="keyboard" id="keyboard"></div>
+    <div class="message" id="message"></div>
+    <button class="new-game" id="newGame">New Game</button>
+</div>
+
+<script>
+const words = [
+    { word: 'javascript', hint: 'Programming language of the web' },
+    { word: 'algorithm', hint: 'Step-by-step problem solving' },
+    { word: 'function', hint: 'Reusable block of code' },
+    { word: 'variable', hint: 'Stores a value in memory' },
+    { word: 'keyboard', hint: 'Input device with keys' },
+    { word: 'database', hint: 'Organized collection of data' },
+    { word: 'terminal', hint: 'Command line interface' },
+    { word: 'browser', hint: 'Software to view websites' },
+    { word: 'network', hint: 'Connected computers' },
+    { word: 'pixel', hint: 'Smallest unit of a screen' },
+    { word: 'gradient', hint: 'Smooth color transition' },
+    { word: 'animation', hint: 'Moving visual elements' },
+    { word: 'framework', hint: 'Foundation for building apps' },
+    { word: 'compiler', hint: 'Translates code to machine language' },
+    { word: 'boolean', hint: 'True or false value' },
+    { word: 'recursion', hint: 'Function that calls itself' },
+    { word: 'debugging', hint: 'Finding and fixing errors' },
+    { word: 'interface', hint: 'Point of interaction' },
+    { word: 'prototype', hint: 'Early model or blueprint' },
+    { word: 'bandwidth', hint: 'Data transfer capacity' },
+    { word: 'encryption', hint: 'Securing data with codes' },
+    { word: 'responsive', hint: 'Adapts to screen sizes' },
+    { word: 'typescript', hint: 'Typed superset of JS' },
+    { word: 'component', hint: 'Reusable UI building block' },
+    { word: 'iteration', hint: 'Repeating a process' },
+    { word: 'callback', hint: 'Function passed as argument' },
+    { word: 'template', hint: 'Predefined layout or pattern' },
+    { word: 'overflow', hint: 'Content exceeding its container' },
+    { word: 'viewport', hint: 'Visible area of a page' },
+    { word: 'console', hint: 'Developer output panel' },
+];
+
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const wordEl = document.getElementById('word');
+const hintEl = document.getElementById('hint');
+const keyboardEl = document.getElementById('keyboard');
+const messageEl = document.getElementById('message');
+const guessesLeftEl = document.getElementById('guessesLeft');
+const newGameBtn = document.getElementById('newGame');
+
+let currentWord = '';
+let guessed = new Set();
+let wrongCount = 0;
+const maxWrong = 6;
+let gameOver = false;
+
+function drawHangman(step) {
+    ctx.strokeStyle = '#666';
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+
+    switch (step) {
+        case 1: // head
+            ctx.strokeStyle = '#ef4444';
+            ctx.beginPath();
+            ctx.arc(120, 50, 16, 0, Math.PI * 2);
+            ctx.stroke();
+            break;
+        case 2: // body
+            ctx.strokeStyle = '#ef4444';
+            ctx.beginPath();
+            ctx.moveTo(120, 66);
+            ctx.lineTo(120, 110);
+            ctx.stroke();
+            break;
+        case 3: // left arm
+            ctx.strokeStyle = '#ef4444';
+            ctx.beginPath();
+            ctx.moveTo(120, 78);
+            ctx.lineTo(96, 96);
+            ctx.stroke();
+            break;
+        case 4: // right arm
+            ctx.strokeStyle = '#ef4444';
+            ctx.beginPath();
+            ctx.moveTo(120, 78);
+            ctx.lineTo(144, 96);
+            ctx.stroke();
+            break;
+        case 5: // left leg
+            ctx.strokeStyle = '#ef4444';
+            ctx.beginPath();
+            ctx.moveTo(120, 110);
+            ctx.lineTo(100, 140);
+            ctx.stroke();
+            break;
+        case 6: // right leg
+            ctx.strokeStyle = '#ef4444';
+            ctx.beginPath();
+            ctx.moveTo(120, 110);
+            ctx.lineTo(140, 140);
+            ctx.stroke();
+            break;
+    }
+}
+
+function drawGallows() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = '#444';
+    ctx.lineWidth = 3;
+    ctx.lineCap = 'round';
+
+    // base
+    ctx.beginPath();
+    ctx.moveTo(30, 160);
+    ctx.lineTo(90, 160);
+    ctx.stroke();
+
+    // pole
+    ctx.beginPath();
+    ctx.moveTo(60, 160);
+    ctx.lineTo(60, 20);
+    ctx.stroke();
+
+    // top
+    ctx.beginPath();
+    ctx.moveTo(60, 20);
+    ctx.lineTo(120, 20);
+    ctx.stroke();
+
+    // rope
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(120, 20);
+    ctx.lineTo(120, 34);
+    ctx.stroke();
+}
+
+function buildKeyboard() {
+    keyboardEl.innerHTML = '';
+    'abcdefghijklmnopqrstuvwxyz'.split('').forEach(letter => {
+        const btn = document.createElement('button');
+        btn.className = 'key';
+        btn.textContent = letter;
+        btn.dataset.letter = letter;
+        btn.addEventListener('click', () => guess(letter));
+        keyboardEl.appendChild(btn);
+    });
+}
+
+function updateWord() {
+    wordEl.innerHTML = '';
+    let allRevealed = true;
+    currentWord.split('').forEach(letter => {
+        const slot = document.createElement('div');
+        slot.className = 'letter-slot';
+        if (guessed.has(letter)) {
+            slot.textContent = letter;
+            slot.classList.add('revealed');
+        } else {
+            allRevealed = false;
+        }
+        wordEl.appendChild(slot);
+    });
+
+    if (allRevealed && !gameOver) {
+        gameOver = true;
+        messageEl.textContent = 'You won!';
+        messageEl.className = 'message win';
+        newGameBtn.classList.add('visible');
+        disableKeys();
+    }
+}
+
+function guess(letter) {
+    if (gameOver || guessed.has(letter)) return;
+
+    guessed.add(letter);
+    const keyBtn = document.querySelector(`.key[data-letter="${letter}"]`);
+
+    if (currentWord.includes(letter)) {
+        keyBtn.classList.add('correct');
+    } else {
+        keyBtn.classList.add('wrong');
+        wrongCount++;
+        guessesLeftEl.textContent = maxWrong - wrongCount;
+        drawHangman(wrongCount);
+
+        if (wrongCount >= maxWrong) {
+            gameOver = true;
+            messageEl.textContent = `The word was "${currentWord}"`;
+            messageEl.className = 'message lose';
+            newGameBtn.classList.add('visible');
+            disableKeys();
+            revealAll();
+        }
+    }
+
+    updateWord();
+}
+
+function revealAll() {
+    wordEl.innerHTML = '';
+    currentWord.split('').forEach(letter => {
+        const slot = document.createElement('div');
+        slot.className = 'letter-slot';
+        slot.textContent = letter;
+        if (guessed.has(letter)) {
+            slot.classList.add('revealed');
+        } else {
+            slot.classList.add('wrong');
+        }
+        wordEl.appendChild(slot);
+    });
+}
+
+function disableKeys() {
+    document.querySelectorAll('.key').forEach(btn => {
+        if (!btn.classList.contains('correct') && !btn.classList.contains('wrong')) {
+            btn.classList.add('wrong');
+        }
+    });
+}
+
+function startGame() {
+    const entry = words[Math.floor(Math.random() * words.length)];
+    currentWord = entry.word;
+    guessed = new Set();
+    wrongCount = 0;
+    gameOver = false;
+
+    guessesLeftEl.textContent = maxWrong;
+    messageEl.textContent = '';
+    messageEl.className = 'message';
+    newGameBtn.classList.remove('visible');
+    hintEl.textContent = 'Hint: ' + entry.hint;
+
+    drawGallows();
+    buildKeyboard();
+    updateWord();
+}
+
+// Keyboard input
+document.addEventListener('keydown', (e) => {
+    const letter = e.key.toLowerCase();
+    if (letter >= 'a' && letter <= 'z' && letter.length === 1) {
+        guess(letter);
+    } else if (e.key === 'Enter' && gameOver) {
+        startGame();
+    }
+});
+
+newGameBtn.addEventListener('click', startGame);
+
+startGame();
+</script>
+
+</body>
+</html>
